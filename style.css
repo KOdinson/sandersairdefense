@@ -112,10 +112,14 @@ h3 { font-size: 18px; font-weight: 700; color: var(--steel); margin-bottom: 14px
 
 .hero-title-row {
   display: flex; align-items: center; justify-content: space-between;
-  width: min(1600px, 100vw - 40px); margin: 0 auto 16px; gap: 24px;
+  width: 100vw; position: relative; left: 50%; margin-left: -50vw;
+  margin-bottom: 16px; padding: 0 7vw; box-sizing: border-box;
 }
 .hero-emblem { width: 150px; height: 150px; flex-shrink: 0; }
-@media (max-width: 768px) { .hero-emblem { display: none; } }
+@media (max-width: 768px) {
+  .hero-emblem { display: none; }
+  .hero-title-row { justify-content: center; width: 100%; left: auto; margin-left: auto; padding: 0; }
+}
 
 #hero h1 {
   font-size: clamp(72px, 10vw, 120px); font-weight: 900;
