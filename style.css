@@ -112,7 +112,7 @@ h3 { font-size: 18px; font-weight: 700; color: var(--steel); margin-bottom: 14px
 
 .hero-title-row {
   display: flex; align-items: center; justify-content: space-between;
-  width: min(1340px, 100vw - 48px); margin: 0 auto 16px; gap: 24px;
+  width: min(1600px, 100vw - 40px); margin: 0 auto 16px; gap: 24px;
 }
 .hero-emblem { width: 150px; height: 150px; flex-shrink: 0; }
 @media (max-width: 768px) { .hero-emblem { display: none; } }
