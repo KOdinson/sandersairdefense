@@ -6,7 +6,7 @@
   <title>WASP | Sanders Air Defense LLC</title>
   <meta name="description" content="Warfighter Autonomous Strike Platform — soldier-portable, non-kinetic counter-UAS system for dismounted ARSOF and infantry. Sanders Air Defense LLC, Murfreesboro, TN." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
 <body>
 
@@ -34,13 +34,17 @@
         </svg>
         <span>SANDERS AIR DEFENSE</span>
       </a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#problem">Problem</a></li>
         <li><a href="#solution">Solution</a></li>
+        <li><a href="#demo">Demo</a></li>
         <li><a href="#readiness">Readiness</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact" class="nav-cta">Contact Us</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -136,7 +140,7 @@
       </div>
 
       <figure class="hud-figure">
-        <img src="hud-concept.png" alt="WASP ground station HUD concept showing tactical map, swarm status, and alert feed with simulated data" loading="lazy" />
+        <img src="hud-concept.png" alt="WASP ground station HUD concept showing tactical map, swarm status, and alert feed with simulated data" width="1600" height="900" loading="lazy" />
         <figcaption>Ground station HUD — concept demonstration with simulated data. Autonomous swarm status, threat tracks, and ISR contacts on a single operator display.</figcaption>
       </figure>
 
@@ -148,6 +152,111 @@
         <div class="spec-item"><span class="spec-label">Per-Engagement Cost</span><span class="spec-val">~$0 (reusable)</span></div>
         <div class="spec-item"><span class="spec-label">Guidance States</span><span class="spec-val">8-state autonomous machine</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section id="demo" class="dark-section">
+    <div class="section-inner">
+      <div class="section-label">See It In Action</div>
+      <h2>Autonomous Intercept — Deploy to Neutralize</h2>
+      <p class="section-intro">One WASP pod launches eight MAVs, searches a sector, converges on a hostile drone, and neutralizes it with a directional D-EMP pulse — then recharges and returns to the pod. Simulated sequence, not flight test footage.</p>
+
+      <div class="scope-frame">
+        <div class="scope-label">SCOPE 01 <span>&mdash;</span> SECTOR OVERWATCH</div>
+        <div class="scope-corner tl"></div>
+        <div class="scope-corner tr"></div>
+        <div class="scope-corner bl"></div>
+        <div class="scope-corner br"></div>
+
+        <svg class="scope-scene" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="scopeSweep" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="var(--midblue)" stop-opacity="0"/>
+              <stop offset="100%" stop-color="var(--midblue)" stop-opacity="0.4"/>
+            </linearGradient>
+          </defs>
+
+          <g>
+            <line class="scope-grid-line" x1="0" y1="100" x2="1000" y2="100"/>
+            <line class="scope-grid-line" x1="0" y1="200" x2="1000" y2="200"/>
+            <line class="scope-grid-line" x1="0" y1="300" x2="1000" y2="300"/>
+            <line class="scope-grid-line" x1="0" y1="400" x2="1000" y2="400"/>
+            <line class="scope-grid-line" x1="0" y1="500" x2="1000" y2="500"/>
+            <line class="scope-grid-line" x1="100" y1="0" x2="100" y2="600"/>
+            <line class="scope-grid-line" x1="250" y1="0" x2="250" y2="600"/>
+            <line class="scope-grid-line" x1="400" y1="0" x2="400" y2="600"/>
+            <line class="scope-grid-line" x1="550" y1="0" x2="550" y2="600"/>
+            <line class="scope-grid-line" x1="700" y1="0" x2="700" y2="600"/>
+            <line class="scope-grid-line" x1="850" y1="0" x2="850" y2="600"/>
+          </g>
+
+          <circle class="scope-ring" cx="500" cy="340" r="90"/>
+          <circle class="scope-ring" cx="500" cy="340" r="150"/>
+          <circle class="scope-ring" cx="500" cy="340" r="210"/>
+          <g class="scope-sweep-pivot">
+            <line x1="500" y1="340" x2="500" y2="130" stroke="url(#scopeSweep)" stroke-width="26"/>
+          </g>
+
+          <path class="scope-pursuit-trail" d="M 640 300 C 610 285, 570 260, 546 231"/>
+
+          <g class="scope-tube">
+            <rect x="465" y="583" width="70" height="12" rx="3" fill="var(--navy)" stroke="rgba(255,255,255,0.15)"/>
+            <rect x="480" y="500" width="40" height="90" rx="6" fill="var(--navy)" stroke="var(--midblue)" stroke-width="2"/>
+            <rect x="487" y="507" width="26" height="9" rx="2" fill="var(--midblue)" class="scope-tube-flash"/>
+          </g>
+
+          <g class="scope-swarm-group">
+            <g class="scope-orbit scope-orbit-1"><g transform="translate(620,340)" class="scope-mav"><polygon points="0,-9 6,7 0,3 -6,7"/></g></g>
+            <g class="scope-orbit scope-orbit-2"><g transform="translate(640,340)" class="scope-mav"><polygon points="0,-9 6,7 0,3 -6,7"/></g></g>
+            <g class="scope-orbit scope-orbit-3"><g transform="translate(660,340)" class="scope-mav"><polygon points="0,-9 6,7 0,3 -6,7"/></g></g>
+            <g class="scope-orbit scope-orbit-4"><g transform="translate(630,340)" class="scope-mav"><polygon points="0,-9 6,7 0,3 -6,7"/></g></g>
+            <g class="scope-orbit scope-orbit-5"><g transform="translate(650,340)" class="scope-mav"><polygon points="0,-9 6,7 0,3 -6,7"/></g></g>
+            <g class="scope-orbit scope-orbit-6"><g transform="translate(670,340)" class="scope-mav"><polygon points="0,-9 6,7 0,3 -6,7"/></g></g>
+            <g class="scope-orbit scope-orbit-7"><g transform="translate(680,340)" class="scope-mav"><polygon points="0,-9 6,7 0,3 -6,7"/></g></g>
+          </g>
+
+          <g class="scope-drone">
+            <g class="scope-drone-shape">
+              <line x1="-11" y1="-11" x2="11" y2="11"/>
+              <line x1="-11" y1="11" x2="11" y2="-11"/>
+              <circle cx="-11" cy="-11" r="3"/>
+              <circle cx="11" cy="-11" r="3"/>
+              <circle cx="-11" cy="11" r="3"/>
+              <circle cx="11" cy="11" r="3"/>
+              <rect x="-4" y="-3" width="8" height="6" rx="1.5"/>
+            </g>
+          </g>
+
+          <g class="scope-emp-wedge"><polygon points="0,0 -30,-58 30,-58"/></g>
+          <g class="scope-emp-burst"><circle r="14"/><circle r="24"/></g>
+
+          <g class="scope-hero"><g class="scope-mav"><polygon points="0,-10 7,8 0,4 -7,8"/></g></g>
+
+          <g class="scope-shield-pulse"><circle r="16"/></g>
+        </svg>
+      </div>
+
+      <div class="scope-ticker">
+        <div class="scope-tick t1"><span class="n">1</span>DEPLOYING</div>
+        <div class="scope-tick t2"><span class="n">2</span>SEARCHING</div>
+        <div class="scope-tick t3"><span class="n">3</span>PURSUING</div>
+        <div class="scope-tick t4"><span class="n">4</span>INTERCEPTING</div>
+        <div class="scope-tick t5"><span class="n">5</span>RECHARGING</div>
+        <div class="scope-tick t6"><span class="n">6</span>LOITERING</div>
+        <div class="scope-tick t7"><span class="n">7</span>RETURNING</div>
+        <div class="scope-tick t8"><span class="n">8</span>EMERGENCY*</div>
+      </div>
+
+      <div class="specs-row">
+        <div class="spec-item"><span class="spec-label">MAVs</span><span class="spec-val">8 per tube</span></div>
+        <div class="spec-item"><span class="spec-label">Weight</span><span class="spec-val">~1.8 kg</span></div>
+        <div class="spec-item"><span class="spec-label">D-EMP Pulse</span><span class="spec-val">350 V &middot; 26.9 J</span></div>
+        <div class="spec-item"><span class="spec-label">Reflector</span><span class="spec-val">42 mm parabolic Cu</span></div>
+        <div class="spec-item"><span class="spec-label">Rearward Attenuation</span><span class="spec-val">&gt;100 dB</span></div>
+        <div class="spec-item"><span class="spec-label">Recharge</span><span class="spec-val">~10 seconds</span></div>
+      </div>
+      <p class="scope-footnote">* EMERGENCY state not shown in this simulated sequence &mdash; an 8-state autonomy machine governs WASP behavior in the field.</p>
     </div>
   </section>
 
@@ -350,6 +459,7 @@
         <div class="footer-links">
           <a href="#problem">Problem</a>
           <a href="#solution">Solution</a>
+          <a href="#demo">Demo</a>
           <a href="#readiness">Readiness</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
@@ -366,6 +476,22 @@
     // Sticky nav shadow on scroll
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
     });
   </script>
 </body>

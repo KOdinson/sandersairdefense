@@ -10,6 +10,7 @@
   --gray:      #333333;
   --midgray:   #666666;
   --border:    rgba(255,255,255,0.12);
+  --threat:    #D64545;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,6 +62,20 @@ body {
   font-weight: 700; letter-spacing: 0.5px;
 }
 .nav-links .nav-cta:hover { background: #a34b0e; color: var(--white); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 34px; height: 34px;
+  background: none; border: none; cursor: pointer; padding: 0;
+}
+.nav-toggle span {
+  display: block; width: 100%; height: 2px; background: var(--white);
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── SECTIONS ── */
 section { padding: 90px 0; }
@@ -248,6 +263,173 @@ h3 { font-size: 18px; font-weight: 700; color: var(--steel); margin-bottom: 14px
 .spec-label { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; }
 .spec-val { font-size: 16px; font-weight: 700; color: var(--white); }
 
+/* ── DEMO / SCOPE ── */
+.scope-frame {
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #081326;
+  margin-bottom: 32px;
+}
+.scope-corner {
+  position: absolute; width: 16px; height: 16px;
+  border: 1px solid rgba(255,255,255,0.25); opacity: 0.8; z-index: 2;
+}
+.scope-corner.tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.scope-corner.tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.scope-corner.bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.scope-corner.br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+.scope-label {
+  position: absolute; top: 14px; left: 26px; z-index: 2;
+  font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.5);
+}
+.scope-label span { color: var(--orange); }
+.scope-scene { display: block; width: 100%; height: auto; }
+
+.scope-grid-line { stroke: rgba(255,255,255,0.05); stroke-width: 1; }
+.scope-ring { fill: none; stroke: rgba(255,255,255,0.12); stroke-width: 1; }
+.scope-sweep-pivot { transform-origin: 500px 340px; animation: scopeSweepSpin 4.2s linear infinite; }
+@keyframes scopeSweepSpin { to { transform: rotate(360deg); } }
+
+.scope-swarm-group { transform-origin: 500px 560px; animation: scopeSwarmEntrance 12s ease-out infinite; }
+@keyframes scopeSwarmEntrance {
+  0%   { opacity: 0; transform: scale(0.25); }
+  6%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.scope-mav { filter: drop-shadow(0 0 3px rgba(46,117,182,0.7)); }
+.scope-mav polygon { fill: var(--midblue); stroke: #04101f; stroke-width: 0.6; }
+
+.scope-orbit { transform-origin: 500px 340px; animation-timing-function: linear; animation-iteration-count: infinite; }
+.scope-orbit-1 { animation-name: scopeSpinCW;  animation-duration: 5s; }
+.scope-orbit-2 { animation-name: scopeSpinCCW; animation-duration: 7s;   animation-delay: -1s; }
+.scope-orbit-3 { animation-name: scopeSpinCW;  animation-duration: 6.2s; animation-delay: -3s; }
+.scope-orbit-4 { animation-name: scopeSpinCCW; animation-duration: 8s;   animation-delay: -2s; }
+.scope-orbit-5 { animation-name: scopeSpinCW;  animation-duration: 5.6s; animation-delay: -4s; }
+.scope-orbit-6 { animation-name: scopeSpinCCW; animation-duration: 9s;   animation-delay: -5s; }
+.scope-orbit-7 { animation-name: scopeSpinCW;  animation-duration: 6.8s; animation-delay: -2.5s; }
+@keyframes scopeSpinCW  { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes scopeSpinCCW { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+
+.scope-hero { animation: scopeHeroPath 12s ease-in-out infinite; }
+@keyframes scopeHeroPath {
+  0%     { transform: translate(500px,560px) scale(0.3); opacity: 0; }
+  4%     { transform: translate(500px,560px) scale(1);  opacity: 1; }
+  8.3%   { transform: translate(500px,460px) scale(1); }
+  20%    { transform: translate(640px,300px) scale(1); }
+  28.3%  { transform: translate(640px,300px) scale(1); }
+  38%    { transform: translate(600px,262px) scale(1); }
+  46.7%  { transform: translate(546px,231px) scale(1.05); }
+  50%    { transform: translate(546px,231px) scale(1.05); }
+  53.3%  { transform: translate(552px,224px) scale(1); }
+  60%    { transform: translate(560px,214px) scale(1); }
+  66.7%  { transform: translate(560px,214px) scale(1); }
+  73%    { transform: translate(520px,272px) scale(1); }
+  80%    { transform: translate(500px,300px) scale(1); }
+  90%    { transform: translate(500px,420px) scale(1); }
+  98%    { transform: translate(500px,560px) scale(1);  opacity: 1; }
+  100%   { transform: translate(500px,560px) scale(0.3); opacity: 0; }
+}
+
+.scope-pursuit-trail {
+  stroke: var(--midblue); stroke-width: 1.4; fill: none;
+  stroke-dasharray: 4 5; opacity: 0;
+  animation: scopeTrailShow 12s ease-in-out infinite;
+}
+@keyframes scopeTrailShow {
+  0%,27%   { opacity: 0; }
+  29%,46%  { opacity: 0.6; }
+  50%,100% { opacity: 0; }
+}
+
+.scope-drone { animation: scopeDronePath 12s ease-in infinite; }
+.scope-drone-shape line { stroke: var(--threat); stroke-width: 2.4; }
+.scope-drone-shape circle,
+.scope-drone-shape rect { fill: var(--threat); }
+.scope-drone { filter: drop-shadow(0 0 4px rgba(214,69,69,0.6)); }
+@keyframes scopeDronePath {
+  0%,24%   { transform: translate(1000px,150px) rotate(0deg) scale(1); opacity: 0; }
+  26%      { transform: translate(900px,158px)  rotate(0deg) scale(1); opacity: 1; }
+  35%      { transform: translate(760px,190px)  rotate(0deg) scale(1); opacity: 1; }
+  46.7%    { transform: translate(560px,224px)  rotate(0deg) scale(1); opacity: 1; }
+  49%      { transform: translate(548px,229px)  rotate(40deg) scale(0.9); opacity: 1; }
+  53%      { transform: translate(536px,330px)  rotate(240deg) scale(0.35); opacity: 0; }
+  100%     { transform: translate(536px,330px)  rotate(240deg) scale(0.35); opacity: 0; }
+}
+
+.scope-emp-burst { animation: scopeEmpFlash 12s linear infinite; transform-origin: 546px 231px; }
+.scope-emp-burst circle { fill: none; stroke: var(--white); stroke-width: 2; }
+.scope-emp-wedge { animation: scopeEmpFlash 12s linear infinite; transform-origin: 546px 231px; }
+.scope-emp-wedge polygon { fill: var(--white); opacity: 0.55; }
+@keyframes scopeEmpFlash {
+  0%,45.5% { opacity: 0; transform: scale(0.2); }
+  47.5%    { opacity: 1; transform: scale(1.5); }
+  52%      { opacity: 0; transform: scale(2.6); }
+  100%     { opacity: 0; transform: scale(0.2); }
+}
+
+.scope-shield-pulse { animation: scopeShieldPulse 12s linear infinite; transform-origin: 555px 220px; }
+.scope-shield-pulse circle { fill: none; stroke: var(--midblue); stroke-width: 1.5; }
+@keyframes scopeShieldPulse {
+  0%,52%   { opacity: 0; transform: scale(0.4); }
+  54%      { opacity: 0.9; transform: scale(1); }
+  64%      { opacity: 0; transform: scale(1.6); }
+  100%     { opacity: 0; transform: scale(0.4); }
+}
+
+.scope-tube-flash {
+  animation: scopeTubeFlash 12s linear infinite;
+}
+@keyframes scopeTubeFlash {
+  0%   { opacity: 0; }
+  2%   { opacity: 1; }
+  8%   { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.scope-ticker {
+  display: flex; flex-wrap: wrap;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px; overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  margin-bottom: 32px;
+}
+.scope-tick {
+  flex: 1 1 0; min-width: 108px;
+  padding: 14px 10px; text-align: center;
+  font-size: 11px; letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.35);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  animation: scopeTickPulse 12s linear infinite;
+}
+.scope-tick:last-child { border-right: none; }
+.scope-tick .n { display: block; font-size: 9px; opacity: 0.7; margin-bottom: 4px; }
+@keyframes scopeTickPulse {
+  0%   { color: var(--orange); }
+  9%   { color: var(--orange); }
+  18%  { color: rgba(255,255,255,0.35); }
+  100% { color: rgba(255,255,255,0.35); }
+}
+.scope-tick.t1 { animation-delay: 0s; }
+.scope-tick.t2 { animation-delay: -1s; }
+.scope-tick.t3 { animation-delay: -3.4s; }
+.scope-tick.t4 { animation-delay: -5.6s; }
+.scope-tick.t5 { animation-delay: -6.4s; }
+.scope-tick.t6 { animation-delay: -8s; }
+.scope-tick.t7 { animation-delay: -9.6s; }
+.scope-tick.t8 { animation: none; color: rgba(255,255,255,0.25); }
+
+.scope-footnote { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+@media (prefers-reduced-motion: reduce) {
+  .scope-sweep-pivot, .scope-swarm-group, .scope-orbit, .scope-hero,
+  .scope-pursuit-trail, .scope-drone, .scope-emp-burst, .scope-emp-wedge,
+  .scope-shield-pulse, .scope-tube-flash, .scope-tick {
+    animation-play-state: paused !important;
+  }
+}
+
 /* ── APPLICATIONS ── */
 #applications { background: var(--white); }
 
@@ -403,7 +585,23 @@ footer { background: #060f1f; padding: 40px 0 20px; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
-  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed; top: 62px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--navy); border-bottom: 3px solid var(--orange);
+    max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+    pointer-events: none;
+  }
+  .nav-links.open { max-height: 420px; opacity: 1; pointer-events: auto; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block; padding: 16px 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+  }
+  .nav-links .nav-cta { margin: 14px 24px; text-align: center; }
   .hero-stats { gap: 10px; }
   .stat-card { min-width: 130px; padding: 14px 18px; }
   .specs-row { flex-direction: column; }
