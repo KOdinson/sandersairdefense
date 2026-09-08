@@ -550,6 +550,15 @@ h3 { font-size: 18px; font-weight: 700; color: var(--steel); margin-bottom: 14px
 .ci-email-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .ci-email-row a { display: inline; }
 
+.platform-link {
+  display: inline !important;
+  color: var(--white) !important;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(255,255,255,0.35) !important;
+  text-underline-offset: 2px;
+}
+.platform-link:hover { color: var(--orange) !important; text-decoration-color: var(--orange) !important; }
+
 .copy-btn {
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.2);
@@ -561,6 +570,15 @@ h3 { font-size: 18px; font-weight: 700; color: var(--steel); margin-bottom: 14px
 }
 .copy-btn:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.4); }
 .copy-btn.copied { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+/* .poc-card sits on a light background, unlike the dark Contact section */
+.poc-card .copy-btn {
+  background: var(--offwhite);
+  border-color: var(--lightblue);
+  color: var(--steel);
+}
+.poc-card .copy-btn:hover { background: var(--lightblue); border-color: var(--steel); }
+.poc-card .copy-btn.copied { background: var(--orange); border-color: var(--orange); color: var(--white); }
 
 .cta-fallback {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
