@@ -547,6 +547,26 @@ h3 { font-size: 18px; font-weight: 700; color: var(--steel); margin-bottom: 14px
   font-size: 16px; color: var(--white); text-decoration: none; display: block;
 }
 .ci-item a:hover { color: var(--orange); }
+.ci-email-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.ci-email-row a { display: inline; }
+
+.copy-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--white);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+  padding: 4px 12px; border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.4); }
+.copy-btn.copied { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+.cta-fallback {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-size: 13px; color: rgba(255,255,255,0.55);
+}
+.cta-fallback .copy-btn { font-family: inherit; }
 
 .contact-cta-box {
   background: rgba(255,255,255,0.07);

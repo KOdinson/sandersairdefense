@@ -6,7 +6,7 @@
   <title>WASP | Sanders Air Defense LLC</title>
   <meta name="description" content="Warfighter Autonomous Strike Platform — soldier-portable, non-kinetic counter-UAS system for dismounted ARSOF and infantry. Sanders Air Defense LLC, Murfreesboro, TN." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="style.css?v=6" />
+  <link rel="stylesheet" href="style.css?v=7" />
 </head>
 <body>
 
@@ -428,7 +428,10 @@
         <div class="contact-info">
           <div class="ci-item">
             <span class="ci-label">Email</span>
-            <a href="mailto:keith@sandersairdefense.com">keith@sandersairdefense.com</a>
+            <div class="ci-email-row">
+              <a href="mailto:keith@sandersairdefense.com">keith@sandersairdefense.com</a>
+              <button type="button" class="copy-btn" data-copy="keith@sandersairdefense.com" aria-label="Copy email address">Copy</button>
+            </div>
           </div>
           <div class="ci-item">
             <span class="ci-label">Phone</span>
@@ -442,6 +445,10 @@
         <div class="contact-cta-box">
           <p>Ready to see the full technical package? Send an email and we'll respond within one business day with the quad chart PDF, system specifications, and availability for a live brief.</p>
           <a href="mailto:keith@sandersairdefense.com?subject=WASP Capability Brief Request&body=Hello Keith,%0D%0A%0D%0AI am interested in learning more about the WASP counter-UAS system.%0D%0A%0D%0AName:%0D%0AOrganization:%0D%0ABest time to connect:%0D%0A" class="btn-primary">Send Brief Request</a>
+          <div class="cta-fallback">
+            <span>No email client set up?</span>
+            <button type="button" class="copy-btn" data-copy="keith@sandersairdefense.com" aria-label="Copy email address">keith@sandersairdefense.com</button>
+          </div>
         </div>
       </div>
     </div>
@@ -491,6 +498,37 @@
         navLinks.classList.remove('open');
         navToggle.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Copy-to-clipboard fallback for mailto CTAs (no default mail client)
+    document.querySelectorAll('.copy-btn[data-copy]').forEach((btn) => {
+      const original = btn.textContent;
+      btn.addEventListener('click', () => {
+        const text = btn.getAttribute('data-copy');
+        const showCopied = () => {
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.classList.remove('copied');
+          }, 1800);
+        };
+        const legacyCopy = () => {
+          const temp = document.createElement('textarea');
+          temp.value = text;
+          temp.style.position = 'fixed';
+          temp.style.opacity = '0';
+          document.body.appendChild(temp);
+          temp.select();
+          try { document.execCommand('copy'); showCopied(); } catch (e) {}
+          document.body.removeChild(temp);
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(showCopied).catch(legacyCopy);
+        } else {
+          legacyCopy();
+        }
       });
     });
   </script>
